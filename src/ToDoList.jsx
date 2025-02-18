@@ -2,11 +2,13 @@ import { useState } from 'react'
 
 const ToDoList = () => {
 
-    const [tasks, setTasks] = useState([])
-    const [formData, setFormData] = useState({
+    const initialState = {
         taskName: '',
         category: ''
-    })
+    }
+
+    const [tasks, setTasks] = useState([])
+    const [formData, setFormData] = useState(initialState)
 
     const handleInputChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
@@ -15,6 +17,7 @@ const ToDoList = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setTasks([...tasks, formData])
+        setFormData(initialState)
     }
 
     return (
